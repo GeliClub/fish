@@ -165,6 +165,42 @@ public void setState(State state)
 
 ### City
 
+**Instance Methods**
+``` java
+/*
+*   
+*/
+public void doTurn()
+
+/*
+* parameters    -
+*/
+public void addLocation(Location loc)
+
+/*
+* parameters    -
+*/
+public void addPerson(Person person)
+
+/*
+* returns       - calculated value of the time variables in day increments
+*/
+public int getDay()
+
+/*
+* returns       - calculated value of the time variable, gets the hour of the day
+*/
+public int getHour()
+```
+
+**Setters/Getters**
+``` java
+public String getName()
+
+public int getTime()
+
+public List<Location> getLocations()
+```
 
 ### Location
 
@@ -225,13 +261,13 @@ public class HospitalLocation extends Location {
 
 Define routines that people can follow by extending the Routine class
 
+``` java
 
-
-
+```
 
 ### Pathogen
 
-Design your own custom pathogen by extending this class, for example, you can create a bacteria that targets children by using the AgeGroup enum. 
+Design your own pathogen by extending this class, for example, you can create a bacteria that targets children by using the AgeGroup enum. 
 When extending the Pathogen class, you must provide implementation for the expand method, which takes in the number of bacteria and returns a value that determines the bacteria's growth rate.
 
 ``` java
