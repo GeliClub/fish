@@ -15,12 +15,12 @@ $ java fish.Helper seed seed.txt 10000
 
 ## API
 
-**[AgeGroup](#AgeGroup)**<br>
-**[Person](#Person)**<br>
-**[City](#City)**<br>
-**[Location](#Location)**<br>
-**[Routine](#Routine)**<br>
-**[Pathogen](#Pathogen)**<br>
+**[AgeGroup](#agegroup)**<br>
+**[Person](#person)**<br>
+**[City](#city)**<br>
+**[Location](#location)**<br>
+**[Routine](#routine)**<br>
+**[Pathogen](#pathogen)**<br>
 
 ### AgeGroup
 
