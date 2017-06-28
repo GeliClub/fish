@@ -3,7 +3,8 @@ Project F.I.S.H: The Fictional Infection Simulation Host
 
 ## Getting Started
 
-Compile the all the fish java files and generate some seeds for reproducible randomness.
+Compile the all the fish java files and generate some seeds for reproducible randomness. 
+Afterwards you should get an text file with the amount you entered of random doubles.
 ``` 
 $ javac /PATH/TO/FISH/DIRECTORY/*.java
 
@@ -12,6 +13,20 @@ $ java fish.Helper seed FILENAME.txt COUNT
 Ex, while at the directory containing the fish folder
 $ java fish.Helper seed seed.txt 10000
 ```
+
+To use the fish package, create your own java file(s) outside of the fish directory, check out the [Main.java](https://github.com/illinoistechesi/fish/blob/master/Main.java) in the fish directory as an example. 
+
+``` java
+package fish;
+
+public class Main {
+    
+    public static void main(String[] args) {
+        /* ...Your implementation of an bacteria simulation... */
+    }
+}
+```
+
 
 ## Documentation
 
@@ -52,15 +67,10 @@ AgeGroup.ELDER
 State.SUSCEPTIBLE
 State.INFECTED
 State.RESISTANT
-
-// TODO/Questions
-//  - Need more info?
-//  - Why is State a nested enum and AgeGroup not nested?
 ```
 
 **Static Methods**
 ``` java
-
 /*
 * parameters    - List of people
 * returns       - List of contagious/infected people
@@ -169,17 +179,17 @@ public void setState(State state)
 **Instance Methods**
 ``` java
 /*
-* Details       -
+* Details       - Complete an move and increments a turn for everyone in the city
 */
 public void doTurn()
 
 /*
-* parameters    -
+* parameters    - Takes a Location object and adds it to a list of locations
 */
 public void addLocation(Location loc)
 
 /*
-* parameters    -
+* parameters    - Takes a Person object and adds it to a list of Persons
 */
 public void addPerson(Person person)
 
@@ -330,7 +340,6 @@ public class SleepRoutine extends Routine {
 
 **Methods**
 ``` java
-
 /*
 * Details       - Must implement method in the extending classes
 */
