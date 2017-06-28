@@ -17,7 +17,7 @@ $ java fish.Helper seed seed.txt 10000
 
 **Java refersher**<br>
 
-Static/Class methods - Can be called anywhere given you have the variables for its parameters
+Static/Class methods - Can be called anywhere given you have variables to input as its parameters
     
 Instance/Object Methods - Called from an instance of an object using dot notaiton
 
@@ -251,8 +251,6 @@ package fish;
 
 public class HospitalLocation extends Location {
     
-    private SleepRoutine rest;
-    
     public HospitalLocation(String id, double lat, double lng, String name) {
         super(id, lat, lng, name);
     }
@@ -273,7 +271,7 @@ public class HospitalLocation extends Location {
         }
         for (Person p : people) {
             if (p.feelsSick()) {
-                rest = new SleepRoutine(10.0);
+                p.setRoutine(new SleepRoutine(10.0));
             }
         }
     }
@@ -398,3 +396,25 @@ public class BoogieMonsterBacteria extends Pathogen {
 
 ### Helper
 
+**Static Methods**
+``` java
+/*
+* Details       - Call this method to get seeded randomw with: // Helper.nextSeeed()
+* returns       - randome double
+*/
+public static double nextSeed()
+
+public static void writeFileLine(String filename, String content)
+
+public static String readEntireFile(String filename)
+
+public static void closeAllFiles()
+
+public static List<String[]> readCoordsFromFile(String filename)
+
+public static void printCityLine(String filename, City city)
+
+public static void printLocationLine(String filename, City city)
+
+public static void printPeopleData(String filename, City city)
+```
