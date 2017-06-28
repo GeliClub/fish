@@ -30,6 +30,7 @@ Instance/Object Methods - Called from an instance of an object using dot notaito
 **[Location](#location)** - Extendable <br>
 **[Routine](#routine)** - Extendable <br>
 **[Pathogen](#pathogen)** - Extendable <br>
+**[Helper](#helper)** <br>
 
 ### AgeGroup
 
@@ -168,7 +169,7 @@ public void setState(State state)
 **Instance Methods**
 ``` java
 /*
-*   
+* Details       -
 */
 public void doTurn()
 
@@ -239,6 +240,7 @@ public String getID()
 public String toString()
 ```
 
+**Extending**
 
 Create various of locations with their own features by extending this class, this allows you to create custom infection behavior based on location.
 For example, a school location might have a higher chance of getting infected than a hospital location, a school might shutdown if there are too many infected but a hospital might give vaccinations.
@@ -249,23 +251,108 @@ package fish;
 
 public class HospitalLocation extends Location {
     
-    /* ...Instantiation and other methods... */
+    private SleepRoutine rest;
+    
+    public HospitalLocation(String id, double lat, double lng, String name) {
+        super(id, lat, lng, name);
+    }
     
     @Override
-    public void doInteractions(List<Person> people) {}
+    public void doInteractions(List<Person> people) {
+        List<Person> contagious = Person.getContagious(people);
+        List<Person> vulnerable = Person.getVulnerable(people);
+        for(Person personCon : contagious){
+            Iterator<Person> iter = vulnerable.iterator();
+            while(iter.hasNext()){
+                Person personVul = iter.next();
+                personVul.doExposure(personCon.getPathogen());
+                if(personVul.getPathogen() != null){
+                    iter.remove();
+                }
+            }
+        }
+        for (Person p : people) {
+            if (p.feelsSick()) {
+                rest = new SleepRoutine(10.0);
+            }
+        }
+    }
 }
 
 ```
 
 ### Routine
 
-Define routines that people can follow by extending the Routine class
+**Method**
+``` java
+/*
+* Detials       - Must implement method in the extending classes
+*/
+abstract public Location getNextLocation(Person person, City city)
+```
+
+**Extending**
+
+Define routines that people can follow by extending the Routine class, this allows people to transition to different locations.
+Routines can be added to different classes, for example location based routine, at a hospital there might be patients sleeping.
 
 ``` java
+package fish;
 
+public class SleepRoutine extends Routine {
+    
+    private double sleepCount;
+    private double sleepLimit;
+    
+    public SleepRoutine(double limit) {
+        this.sleepCount = 0.0;
+        if (limit > sleepCount)
+            this.sleepLimit = limit;
+        else
+            this.sleepCount = 7.0;
+    }
+    
+    public SleepRoutine(double count, double limit) { ... }
+    
+    public Location getNextLocation(Perosn person, City city) {
+        Location nextLoc = person.getLocation();
+        while(sleepCount < sleepLimit) {
+            sleepCount++;
+            return nextLoc;
+        }
+        Location<Location> nearby = Location.getWithin();
+        int rand = (int)(Math.abs(Helper.nextSeed() * nearby.size());
+        nextLoc = nearby.get(rand);
+        return nextLoc;
+    }
+}
 ```
 
 ### Pathogen
+
+**Methods**
+``` java
+
+/*
+* Details       - Must implement method in the extending classes
+*/
+abstract int expand(int bacteria)
+
+/*
+* parameters    - AgeGroup allows customize behavior based on age
+* returns       - returns default values, if its not overrided in the extending class
+*/
+public double getInfectivity(AgeGroup ageGroup)
+public double getToxigenicity(AgeGroup ageGroup)
+public double getResistance(AgeGroup ageGroup)
+
+/*
+* Detials       - Prints pathogen information
+*/
+public void printSummary()
+```
+
+**Extending**
 
 Design your own pathogen by extending this class, for example, you can create a bacteria that targets children by using the AgeGroup enum. 
 When extending the Pathogen class, you must provide implementation for the expand method, which takes in the number of bacteria and returns a value that determines the bacteria's growth rate.
@@ -308,3 +395,6 @@ public class BoogieMonsterBacteria extends Pathogen {
     }
 }
 ```
+
+### Helper
+
