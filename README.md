@@ -32,9 +32,9 @@ public class Main {
 
 **Java refersher**<br>
 
-Static/Class methods - Can be called anywhere given you have variables to input as its parameters
+Static/Class methods - Can be called anywhere given you have inputs for its parameters
     
-Instance/Object Methods - Called from an instance of an object using dot notaiton
+Instance/Object Methods - Called only if you have an instance of the object
 
 
 **Table of Contents**<br>
@@ -99,42 +99,42 @@ public static HashMap<State, List<Person>> groupPeopleByState(List<Person> peopl
 **Instance Methods**
 ``` java
 /*
-* parameters    - 
+* Details        - Will exposured this person to the pathogen input, exposure can be used in interactions with infected persons (uses the seeded random for reproducible results)
 */
-public void doTurn(City city)
+public void doExposure(Pathogen pathogen)
 
 /*
-* parameters    -
+* Details       - Similar to doExposure, but the possibility of getting infected by the given pathogen input is guaranteed
 */
 public void doInfect(Pathogen pathogen)
 
 /*
-* returns       - 
+* details       - A person's state do not change to INFECTED until symptom are shown or feelsSick is true (similar to isIncubated, but used in interactions)
 */
 public boolean feelsSick()
 
 /*
-* returns       - 
+* details       - When bacteria in the host has passed the latent stage (similar to isLatent, but used in interactions)
 */
 public boolean isContagious()
 
 /*
-* returns       - 
+* details       - When a person is not infected and not resistant to bacteria (resistant is present only after going through the infection stages)
 */
 public boolean isVulnerable()
 
 /*
-* returns       - 
+* details       - The possibility of getting infected when exposured to the bacteria (uses the seeded random for reproducible results)
 */
 public double getSusceptibility()
 
 /*
-* returns       - 
+* details       - Once the bacteria is incubated the symptom will start to show and immune system response will increase (similar to feelsSick, but used to describe the immune system)
 */
 public boolean isIncubated()
 
 /*
-* returns       - 
+* details       - When the bacteria goes exposured to the start of incubtion (similar to isContagious but used to describe the immune system)
 */
 public boolean isLatent()
 
