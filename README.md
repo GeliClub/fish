@@ -75,26 +75,26 @@ State.RESISTANT
 **Static Methods**
 ``` java
 /*
-* parameters    - List of people
-* returns       - List of contagious/infected people
+* parameters - List of people
+* returns    - List of contagious/infected people
 */
 public static List<Person> getContagious(List<Person> people)
 
 /*
-* parameters    - List of people
-* returns       - List of people that can be infected, non-resistance to bacteria
+* parameters - List of people
+* returns    - List of people that can be infected, non-resistance to bacteria
 */
 public static List<Person> getVulnerable(List<Person> people)
 
 /*
-* parameters    - List of people
-* returns       - HashMap with Key/Value entries, each key is a location with a list of people in that location as its value
+* parameters - List of people
+* returns    - HashMap with Key/Value entries, each key is a location with a list of people in that location as its value
 */
 public static HashMap<Location, List<Person>> groupPeopleByLocation(List<Person> people)
 
 /*
-* parameters    - List of people
-* returns       - HashMap with key/value entries, each key is a infection state with a list of people in that state as its value
+* parameters - List of people
+* returns    - HashMap with key/value entries, each key is a infection state with a list of people in that state as its value
 */
 public static HashMap<State, List<Person>> groupPeopleByState(List<Person> people)
 ```
@@ -102,47 +102,47 @@ public static HashMap<State, List<Person>> groupPeopleByState(List<Person> peopl
 **Instance Methods**
 ``` java
 /*
-* Details        - Will exposured this person to the pathogen input, exposure can be used in interactions with infected persons (uses the seeded random for reproducible results)
+* Details    - Will exposured this person to the pathogen input, exposure can be used in interactions with infected persons (uses the seeded random for reproducible results)
 */
 public void doExposure(Pathogen pathogen)
 
 /*
-* Details       - Similar to doExposure, but the possibility of getting infected by the given pathogen input is guaranteed
+* Details    - Similar to doExposure, but the possibility of getting infected by the given pathogen input is guaranteed
 */
 public void doInfect(Pathogen pathogen)
 
 /*
-* details       - A person's state do not change to INFECTED until symptom are shown or feelsSick is true (similar to isIncubated, but used in interactions)
+* details    - A person's state do not change to INFECTED until symptom are shown or feelsSick is true (similar to isIncubated, but used in interactions)
 */
 public boolean feelsSick()
 
 /*
-* details       - When bacteria in the host has passed the latent stage (similar to isLatent, but used in interactions)
+* details    - When bacteria in the host has passed the latent stage (similar to isLatent, but used in interactions)
 */
 public boolean isContagious()
 
 /*
-* details       - When a person is not infected and not resistant to bacteria (resistant is present only after going through the infection stages)
+* details    - When a person is not infected and not resistant to bacteria (resistant is present only after going through the infection stages)
 */
 public boolean isVulnerable()
 
 /*
-* details       - The possibility of getting infected when exposured to the bacteria (uses the seeded random for reproducible results)
+* details    - The possibility of getting infected when exposured to the bacteria (uses the seeded random for reproducible results)
 */
 public double getSusceptibility()
 
 /*
-* details       - Once the bacteria is incubated the symptom will start to show and immune system response will increase (similar to feelsSick, but used to describe the immune system)
+* details    - Once the bacteria is incubated the symptom will start to show and immune system response will increase (similar to feelsSick, but used to describe the immune system)
 */
 public boolean isIncubated()
 
 /*
-* details       - When the bacteria goes exposured to the start of incubtion (similar to isContagious but used to describe the immune system)
+* details    - When the bacteria goes exposured to the start of incubtion (similar to isContagious but used to describe the immune system)
 */
 public boolean isLatent()
 
 /*
-* returns       - Integer time since exposured in hours, calculated value
+* returns    - Integer time since exposured in hours, calculated value
 */
 public int getTimeSinceExposure()
 ```
@@ -182,27 +182,27 @@ public void setState(State state)
 **Instance Methods**
 ``` java
 /*
-* Details       - Complete an move and increments a turn for everyone in the city
+* Details    - Complete an move and increments a turn for everyone in the city
 */
 public void doTurn()
 
 /*
-* parameters    - Takes a Location object and adds it to a list of locations
+* parameters - Takes a Location object and adds it to a list of locations
 */
 public void addLocation(Location loc)
 
 /*
-* parameters    - Takes a Person object and adds it to a list of Persons
+* parameters - Takes a Person object and adds it to a list of Persons
 */
 public void addPerson(Person person)
 
 /*
-* returns       - calculated value of the time variables in day increments
+* returns    - calculated value of the time variables in day increments
 */
 public int getDay()
 
 /*
-* returns       - calculated value of the time variable, gets the hour of the day
+* returns    - calculated value of the time variable, gets the hour of the day
 */
 public int getHour()
 ```
@@ -222,20 +222,20 @@ public List<Location> getLocations()
 
 ``` java
 /*
-* parameters    - two Location objects
-* returns       - distance between them
+* parameters - two Location objects
+* returns    - distance between them
 */
 public static double getDistance(Location l1, Location l2)
 
 /*
-* parameters    - reference location, and a list of locations
-* returns       - list of location sorted by distance to the reference location
+* parameters - reference location, and a list of locations
+* returns    - list of location sorted by distance to the reference location
 */
 public static List<Location> sortByDistanceFrom(Location ref, List<Location> locations)
 
 /*
-* parameters    - reference location, double, list of locations
-* returns       - list of locations within the limit of the reference location
+* parameters - reference location, double, list of locations
+* returns    - list of locations within the limit of the reference location
 */
 public static List<Location> getWithin(Location ref, double limit, List<Location> locations)
 ```
@@ -297,7 +297,7 @@ public class HospitalLocation extends Location {
 **Method**
 ``` java
 /*
-* Detials       - Must implement method in the extending classes
+* Detials    - Must implement method in the extending classes
 */
 abstract public Location getNextLocation(Person person, City city)
 ```
@@ -344,20 +344,20 @@ public class SleepRoutine extends Routine {
 **Methods**
 ``` java
 /*
-* Details       - Must implement method in the extending classes
+* Details    - Must implement method in the extending classes
 */
 abstract int expand(int bacteria)
 
 /*
-* parameters    - AgeGroup allows customize behavior based on age
-* returns       - returns default values, if its not overrided in the extending class
+* parameters - AgeGroup allows customize behavior based on age
+* returns    - returns default values, if its not overrided in the extending class
 */
 public double getInfectivity(AgeGroup ageGroup)
 public double getToxigenicity(AgeGroup ageGroup)
 public double getResistance(AgeGroup ageGroup)
 
 /*
-* Detials       - Prints pathogen information
+* Detials    - Prints pathogen information
 */
 public void printSummary()
 ```
@@ -411,8 +411,8 @@ public class BoogieMonsterBacteria extends Pathogen {
 **Static Methods**
 ``` java
 /*
-* Details       - Call this method to get seeded randomw with: // Helper.nextSeeed()
-* returns       - randome double
+* Details    - Call this method to get seeded randomw with: // Helper.nextSeeed()
+* returns    - randome double
 */
 public static double nextSeed()
 
