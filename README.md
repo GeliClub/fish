@@ -27,6 +27,9 @@ public class Main {
 }
 ```
 
+**Simulation Timeline**
+![Timeline](https://github.com/GeliClub/fish/raw/master/Gantt%20Chart.png)
+
 
 ## Documentation
 
