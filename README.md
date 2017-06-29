@@ -27,7 +27,7 @@ public class Main {
 }
 ```
 
-**Simulation Timeline**
+**Infection Timeline**
 ![Timeline](https://github.com/GeliClub/fish/raw/master/Gantt%20Chart.png)
 
 
