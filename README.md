@@ -4,7 +4,7 @@ Project F.I.S.H: The Fictional Infection Simulation Host
 ## Getting Started
 
 Compile the all the fish java files and generate some seeds for reproducible randomness. 
-Afterwards you should get an text file with the amount you entered of random doubles.
+Afterwards you should get an text file with the amount you entered of random doubles that is OUTSIDE of the fish directory.
 ``` 
 $ javac /PATH/TO/FISH/DIRECTORY/*.java
 
@@ -14,7 +14,7 @@ Ex, while at the directory containing the fish folder
 $ java fish.Helper seed seed.txt 10000
 ```
 
-To use the fish package, create your own java file(s) outside of the fish directory, check out the [Main.java](https://github.com/illinoistechesi/fish/blob/master/Main.java) in the fish directory as an example. 
+To use the fish package, create your own java file(s) outside of the fish directory, check out the example [Main.java](https://github.com/illinoistechesi/fish/blob/master/Main.java) in the fish directory. 
 
 ``` java
 package fish;
