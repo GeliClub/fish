@@ -260,9 +260,17 @@ For example, a school location might have a higher chance of getting infected th
 
 
 ``` java
-package fish;
+import fish.*;
 
 public class HospitalLocation extends Location {
+    
+    public HospitalLocation(String id) {
+        super(id);
+    }
+    
+    public HospitalLocation(String id, double lat, double lng) {
+        super(id, lat, lng);
+    }
     
     public HospitalLocation(String id, double lat, double lng, String name) {
         super(id, lat, lng, name);
@@ -308,7 +316,7 @@ Define routines that people can follow by extending the Routine class, this allo
 Routines can be added to different classes, for example location based routine, at a hospital there might be patients sleeping.
 
 ``` java
-package fish;
+import fish.*;
 
 public class SleepRoutine extends Routine {
     
@@ -368,7 +376,7 @@ Design your own pathogen by extending this class, for example, you can create a 
 When extending the Pathogen class, you must provide implementation for the expand method, which takes in the number of bacteria and returns a value that determines the bacteria's growth rate.
 
 ``` java
-package fish;
+import fish.*;
 
 public class BoogieMonsterBacteria extends Pathogen {
     
@@ -412,7 +420,7 @@ public class BoogieMonsterBacteria extends Pathogen {
 ``` java
 /*
 * Details    - Call this method to get seeded randomw with: // Helper.nextSeeed()
-* returns    - randome double
+* returns    - randome double between 0 and 1
 */
 public static double nextSeed()
 
