@@ -179,6 +179,8 @@ public void setState(State state)
 
 ### City
 
+City time initialize at 0 or 24:00 hour, 12am, or check the City class to see the time variable
+
 **Instance Methods**
 ``` java
 /*
@@ -197,12 +199,12 @@ public void addLocation(Location loc)
 public void addPerson(Person person)
 
 /*
-* returns    - calculated value of the time variables in day increments
+* returns    - calculated value of the time variables in day increments (ex. day 4, day 50, day 1001)
 */
 public int getDay()
 
 /*
-* returns    - calculated value of the time variable, gets the hour of the day
+* returns    - calculated value of the time variable, gets the hour of the day (24 hour clock, e.g. 4 = 4am, 21 = 9pm)
 */
 public int getHour()
 ```
